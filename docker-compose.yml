@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  backend:
+    build: ./manager/
+    ports:
+      - 8000:8000
+
+  gateway:
+    build: ./gateway/
+    ports:
+      - 80:80
+    volumes:
+      - ./front/:/var/www/app/
+    depends_on:
+      - backend
